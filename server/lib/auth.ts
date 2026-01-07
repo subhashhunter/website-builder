@@ -2,7 +2,11 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "./prisma.js";
 
-const trustedOrigins=process.env.TRUSTED_ORIGINS?.split(',') || []
+// const trustedOrigins=process.env.TRUSTED_ORIGINS?.split(',') || []
+const trustedOrigins = process.env.TRUSTED_ORIGINS
+  ? [process.env.TRUSTED_ORIGINS]
+  : [];
+
 export const auth = betterAuth({
     database: prismaAdapter(prisma, {
         provider: "postgresql", // or "mysql", "postgresql", ...etc
@@ -16,7 +20,7 @@ export const auth = betterAuth({
   advanced:{
     cookies:{
         session_token:{
-            name:'auth_session',
+            // name:'auth_session',
             attributes:{
                 httpOnly:true,
                 secure:process.env.NODE_ENV==='production',

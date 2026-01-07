@@ -20,7 +20,7 @@ export const auth = betterAuth({
   advanced:{
     cookies:{
         session_token:{
-            // name:'auth_session',
+              name:'auth_session',
             attributes:{
                 httpOnly:true,
                 secure:process.env.NODE_ENV==='production',

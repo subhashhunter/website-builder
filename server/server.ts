@@ -20,7 +20,7 @@ app.set("trust proxy", 1);
 app.use(cors(corsOPtions))
 
 app.post('/api/stripe',express.raw({type:'application/json'}),stripeWebhook)
-app.all('/api/auth/{*any}', toNodeHandler(auth));
+app.all('/api/auth/*', toNodeHandler(auth));
 
 app.use(express.json({limit:'50mb'} ))
 

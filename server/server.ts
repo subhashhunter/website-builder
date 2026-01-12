@@ -16,6 +16,7 @@ const corsOPtions={
     origin:process.env.TRUSTED_ORIGINS?.split(',')|| [],
     credentials:true
 } 
+app.set('trust proxy',1)
 
 app.use(cors(corsOPtions))
 
